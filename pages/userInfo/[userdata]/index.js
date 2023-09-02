@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { data } from "..";
 import { useRouter } from "next/router";    
 
@@ -15,6 +16,7 @@ const index = () => {
     return (
         <>
             <h1>welcome user</h1>
+            <p><Link href={'.'}>back</Link></p>
 
             {data[router.query.userdata]}
         </>
