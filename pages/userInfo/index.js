@@ -1,21 +1,24 @@
 import Link from "next/link";
 import { useEffect } from "react";
-
-export const data = [
-    { id: 'one', name: 'name1', surname: "surname1"},
-    { id: 'two', name: 'name2', surname: "surname2"}
-  ]
-
+import Data from "@/Data/Data";
+import StateContext from "@/stateContext/StateContext";
 
 const index = () => {
 
+    const { first, setFirst } = StateContext()
+
+    // useEffect(() => {
+    //     console.log(first.id)
+    // }, [])
+
     return (
-        <>
+        <>        
             <h1>user data</h1>
-            <Link href={'/'}>back</Link>
+            <p><Link  href={'/'}>back</Link></p>
+
             {
-                data.map((s) => {
-                    return <ul><li><Link key={s.id} href={`/userInfo/${s.id}`}>{s.name}</Link></li></ul>
+                Data.map((s) => {
+                    return <ul><li key={s.id}  onClick={() => {setFirst(s)}}><Link href={`/userInfo/${s.id}`} >{s.title}</Link></li></ul>
                 })
             }
         </>
