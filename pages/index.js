@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
 import Link from 'next/link'
+import Button from '@/Components/button/button'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,11 +20,11 @@ export default function Home() {
       <main className={`${styles.main} ${inter.className}`}>
         <h1>Welcome to Todo4real</h1>
 
-        <ul>
-          <li><Link href='about'>about</Link></li>
-          <li ><Link href='userInfo'>userInfo</Link></li>
-          <li><Link href='about'>about</Link></li>
-        </ul>
+        {/* <ul> */}
+
+          <li><Button link={'about'} children={'about'}/></li>
+          <li><Button link={'userInfo'} children={'userInfo'}/></li>
+        {/* </ul> */}
 
       </main>
     </>
