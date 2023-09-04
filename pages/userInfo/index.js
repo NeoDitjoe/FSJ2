@@ -14,7 +14,6 @@ const index = () => {
     // const address = location.replace(', ', '\n')
     return (
         <>
-            <h1>user data</h1>
             <Button link={'/'} children={'back'}/>
 
             <ul className={style.list}>        
@@ -23,7 +22,7 @@ const index = () => {
                     Data.map((item) => {
                         return (
 
-                            <li className={style.item}>
+                            <li className={style.item} key={item.id}>
                                 
                                 <img src={item.image} alt={item.image}/>
                                 <div className={style.content}>

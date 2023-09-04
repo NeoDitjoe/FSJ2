@@ -20,11 +20,11 @@ export default function Home() {
       <main className={`${styles.main} ${inter.className}`}>
         <h1>Welcome to Todo4real</h1>
 
-        {/* <ul> */}
+        <ul>
 
-          <li><Button link={'about'} children={'about'}/></li>
-          <li><Button link={'userInfo'} children={'userInfo'}/></li>
-        {/* </ul> */}
+          <Button link={'about'} children={'about'}/>
+          <Button link={'userInfo'} children={'userInfo'}/>
+        </ul>
 
       </main>
     </>
