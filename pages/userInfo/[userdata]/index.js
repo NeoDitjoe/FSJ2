@@ -1,50 +1,28 @@
 import Link from "next/link";
-import { useRouter } from "next/router";    
-import StateContext from "@/stateContext/StateContext";
+import { useRouter } from "next/router"; 
 import Data from "@/Data/Data";
 import { useEffect } from "react";
 
 const index = () => {
-    const { setFirst, first } = StateContext()
     const router = useRouter()
-
-    const data = {
-        one : 'this is one',
-        two : 'this is two',
-        three : 'this is three',
-        four : 'this is four',
-        five : 'this is five',
-        six : 'this is six',
-        seven : 'this is seven'
-    }
-
-    useEffect(() => {
-        
-        const m = Data.filter((k) => {
-          return k.id.includes(router.query.userdata)
-
-        })
-
-        console.log(m.map(m => m.title))
-       
-    } )
-
     
     function a(){
-        const m = Data.filter((k) => {
-            return k.id.includes(router.query.userdata)
+        const mapOver = Data.filter((item) => {
+            return item.title.includes(router.query.userdata)
           })
           return (
            <>
                 { 
-                    m.map((m) => {
+                    mapOver.map((item) => {
+
+                        const day = new Date(item.date).toLocaleDateString('en-GB', {  year: "2-digit", month: "short", day: "numeric",})
                         return (
-                            <>
-                                <h2>{m.title}</h2>
-                                <p>{m.description}</p>
-                                <p>{m.location}</p>
-                                <p>{m.date}</p>
-                            </>
+                            <div key={item.id}>
+                                <h2>{item.title}</h2>
+                                <p>{item.description}</p>
+                                <div>{item.location.replace(', ', '\n')}</div>
+                                <p>{day}</p>
+                            </div>
                         )
                     })
                 }
@@ -53,14 +31,12 @@ const index = () => {
     }
 
     useEffect(() => {
-
        a()
     })
 
     return (
-        <>
-            
-            <p onClick={() => {setFirst(null)}}><Link href={'.'}>back</Link></p>
+        <> 
+            <Link href={'.'}>back</Link>
 
             {a()}
         </>
