@@ -14,6 +14,7 @@ const index = () => {
         const mapOver = Data.filter((item) => {
             return item.title.includes(router.query.userdata)
           })
+          
           return (
            <>
                 { 
