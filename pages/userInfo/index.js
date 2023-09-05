@@ -7,6 +7,7 @@ import Button from "@/Components/button/button";
 import ArrowRightIcon from "@/Components/icons/arrow-right-icon";
 import AddressIcon from "@/Components/icons/address-icon";
 import DateIcon from "@/Components/icons/date-icon";
+import EventSearch from "@/Components/EventSearch/event-search";
 
 const index = () => {
 
@@ -14,7 +15,7 @@ const index = () => {
     // const address = location.replace(', ', '\n')
     return (
         <>
-            <Button link={'/'} children={'back'}/>
+            <EventSearch/>
 
             <ul className={style.list}>        
 
