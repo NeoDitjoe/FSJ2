@@ -1,5 +1,5 @@
 import EventsList from "@/Components/Event-list/Events-list";
-import { getFilteredEvents } from "@/Data/Data";
+import Data, { getFilteredEvents } from "@/Data/Data";
 import { useRouter } from "next/router";
 
 const FilteredEvents= () => {
@@ -32,7 +32,14 @@ const FilteredEvents= () => {
     return (
         <div>
             <h1>Filtered Events</h1>
-            <EventsList item={filteredEvents}/>
+
+            {
+                    filteredEvents.map((item) => {
+                        return (
+                            <EventsList {...item}/>
+                        )
+                    })
+                }
         </div>
     );
 }

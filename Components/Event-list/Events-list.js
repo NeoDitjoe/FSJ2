@@ -4,7 +4,7 @@ import AddressIcon from "@/Components/icons/address-icon";
 import ArrowRightIcon from "@/Components/icons/arrow-right-icon";
 import Button from "@/Components/button/button";
 
-const EventsList = ({id, title, image, date, location, description }) => {
+const EventsList = ({id, title, image, date, location }) => {
 
     return (
         
@@ -22,7 +22,7 @@ const EventsList = ({id, title, image, date, location, description }) => {
 
                 <div className={style.address}>
                     <AddressIcon/>
-                    <address>{location.replace(', ', '\n')}</address>
+                    {/* <address>{location.replace(', ', '\n')}</address> */}
                 </div>
             </div>
 
