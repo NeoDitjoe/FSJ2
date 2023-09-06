@@ -22,7 +22,7 @@ const EventsList = ({id, title, image, date, location }) => {
 
                 <div className={style.address}>
                     <AddressIcon/>
-                    {/* <address>{location.replace(', ', '\n')}</address> */}
+                    <address>{location.replace(', ', '\n')}</address>
                 </div>
             </div>
 

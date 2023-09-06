@@ -1,6 +1,10 @@
 import EventsList from "@/Components/Event-list/Events-list";
-import Data, { getFilteredEvents } from "@/Data/Data";
+import Button from "@/Components/button/button";
+import { getFilteredEvents } from "@/Data/Data";
 import { useRouter } from "next/router";
+import { Fragment } from "react";
+import style from 'styles/userInfo.module.css'
+import Error from "@/Components/Error/Error";
 
 const FilteredEvents= () => {
 
@@ -20,26 +24,45 @@ const FilteredEvents= () => {
     const numMonth = +filteredMonth
 
     if (isNaN(numYear) || isNaN(numMonth) || numYear < 2020 || numMonth < 1 || numMonth > 12){
-        return <p>Invalid Filter</p>
+        return (
+            <div className="center">
+                <Error>
+                    <p>Invalid Filter</p>
+                </Error>
+                <Button link={'/userInfo'} children={'Show all Events'}/>
+            </div>
+        )
     }
 
     const filteredEvents = getFilteredEvents({ year: numYear, month:numMonth })
 
     if (!filteredEvents || filteredEvents.length === 0){
-        return <p>No events found</p>
+        return (
+            <div className="center">
+                <Error>
+                    <p>No events found</p> 
+                </Error>
+                <Button link={'/userInfo'} children={'Show all Events'}/>
+            </div>
+        )
     }
 
-    return (
-        <div>
-            <h1>Filtered Events</h1>
+    const date = new Date(numYear, numMonth -1)
 
-            {
+    return (
+        <div className="center">
+            <h3>Events in {new Date(date).toLocaleDateString('en-GB', {  year: "2-digit", month: "short"})}</h3>
+            <Button link={'/userInfo'} children={'Show all Events'}/>
+
+            <ul className={style.list}>
+                {
                     filteredEvents.map((item) => {
                         return (
                             <EventsList {...item}/>
                         )
                     })
                 }
+            </ul>
         </div>
     );
 }

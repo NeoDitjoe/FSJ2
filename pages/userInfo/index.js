@@ -8,8 +8,8 @@ const index = () => {
 
     const router = useRouter()
 
-    function EventHandler(){
-        const fullPath = `/userInfo/${year.value}/${month.value}`
+    function EventHandler(year, month){
+        const fullPath = `/userInfo/${year}/${month}`
 
         router.push(fullPath)
     }

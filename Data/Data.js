@@ -4,7 +4,7 @@
       title: 'Programming for everyone',
       description:
         'Everyone can learn to code! Yes, everyone! In this live event, we are going to go through all the key basics and get you started with programming as well.',
-      location: 'Somestreet 25, 12345 San Somewhereo',
+      location: 'Somestreet 25, 12345 San Somewhere',
       date: '2021-05-12',
       image: 'https://images.unsplash.com/photo-1537432376769-00f5c2f4c8d2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1925&q=80',
       isFeatured: false,
@@ -21,7 +21,7 @@
     },
     {
       id: 'three',
-      title: 'to thetop',
+      title: 'To The Top',
       description:
         'You probably need no help with networking in general. But focusing your energy correctly - that is something where most people can improve.',
       location: 'My Street 12, 10115 Broke City',
@@ -31,16 +31,16 @@
     },
   ];
 
-  export default Data
+export default Data
 
-  export function getFilteredEvents(dateFilter) {
-    const { year, month } = dateFilter;
-  
-    let filteredEvents = Data.filter((event) => {
-      const eventDate = new Date(event.date);
-      return eventDate.getFullYear() === year && eventDate.getMonth() === month - 1;
-    });
-  
-    return filteredEvents;
-  }
-  
+export function getFilteredEvents(dateFilter) {
+  const { year, month } = dateFilter;
+
+  let filteredEvents = Data.filter((event) => {
+    const eventDate = new Date(event.date);
+    return eventDate.getFullYear() === year && eventDate.getMonth() === month - 1;
+  });
+
+  return filteredEvents;
+}
+
