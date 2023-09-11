@@ -4,7 +4,11 @@ import EventSearch from "@/Components/EventSearch/event-search";
 import { useRouter } from "next/router";
 import EventsList from "@/Components/Event-list/Events-list";
 
-const index = () => {
+//pt2
+import { getFeaturedEvents } from "@/Api/Api";
+import { useEffect } from "react";
+
+const index = (props) => {
 
     const router = useRouter()
 
@@ -19,7 +23,7 @@ const index = () => {
             <EventSearch onSearch={EventHandler}/>
 
             <ul className={style.list}>        
-
+            
                 {
                     Data.map((item) => {
                         return (
@@ -32,5 +36,14 @@ const index = () => {
     )
 }
 
+export async function getStaticProps(context){
+    const featuredEvents = await getFeaturedEvents()
+
+    return {
+        props: {
+            featuredEvents : featuredEvents
+        }
+    }
+}
 
 export default index;

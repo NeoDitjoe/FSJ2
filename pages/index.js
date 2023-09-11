@@ -22,8 +22,8 @@ export default function Home() {
 
         <ul>
 
-          <Button link={'about'} children={'about'}/>
-          <Button link={'userInfo'} children={'userInfo'}/>
+          <Button link={'about'} children='about'/>
+          <Button link={'userInfo'} children='userInfo'/>
         </ul>
 
       </main>

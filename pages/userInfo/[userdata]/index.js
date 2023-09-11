@@ -31,7 +31,6 @@ const index = () => {
                                     <div className={style.image}>
                                         <img src={item.image} alt={item.image}/>
                                     </div>
-
                                     <div>
                                         <div className={style.date}>
                                             <DateIcon/>
