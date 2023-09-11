@@ -1,13 +1,16 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from '@/styles/Home.module.css'
-import Link from 'next/link'
 import Button from '@/Components/button/button'
+import { useRouter } from 'next/router'
+import style from 'styles/userInfo.module.css'
+import { getFeaturedEvents } from '@/Api/Api'
+import EventsList from '@/Components/Event-list/Events-list'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
+export default function Home(props) {
+
   return (
     <>
       <Head>
@@ -18,15 +21,37 @@ export default function Home() {
       </Head>
       
       <main className={`${styles.main} ${inter.className}`}>
-        <h1>Welcome to Todo4real</h1>
+        <h1>Cozy4real</h1>
 
         <ul>
 
           <Button link={'about'} children='about'/>
-          <Button link={'userInfo'} children='userInfo'/>
+          <Button link={'userInfo'} children='Events'/>
+        </ul>
+
+        <ul className={style.list}>        
+            
+            {
+                props.featuredEvents.map((item) => {
+                    return (
+                        <EventsList {...item}/>
+                    )
+                })
+            }
         </ul>
 
       </main>
     </>
   )
+}
+
+export async function getStaticProps(context){
+  const featuredEvents = await getFeaturedEvents()
+
+  return {
+      props: {
+          featuredEvents : featuredEvents
+      },
+      revalidate: 1800
+  }
 }

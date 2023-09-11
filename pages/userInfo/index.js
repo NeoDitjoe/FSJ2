@@ -3,10 +3,7 @@ import style from 'styles/userInfo.module.css'
 import EventSearch from "@/Components/EventSearch/event-search";
 import { useRouter } from "next/router";
 import EventsList from "@/Components/Event-list/Events-list";
-
-//pt2
-import { getFeaturedEvents } from "@/Api/Api";
-import { useEffect } from "react";
+import { getAllEvents } from "@/Api/Api";
 
 const index = (props) => {
 
@@ -37,13 +34,13 @@ const index = (props) => {
 }
 
 export async function getStaticProps(context){
-    const featuredEvents = await getFeaturedEvents()
+    const featuredEvents = await getAllEvents()
 
     return {
         props: {
             featuredEvents : featuredEvents
         },
-        revalidate: 10
+        revalidate: 30
     }
 }
 

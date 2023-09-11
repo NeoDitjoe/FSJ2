@@ -1,14 +1,11 @@
-import Link from "next/link";
-import { useRouter } from "next/router"; 
 import { useEffect } from "react";
 import style from 'styles/user-data.module.css'
 import AddressIcon from "@/Components/icons/address-icon";
 import DateIcon from "@/Components/icons/date-icon";
 import Button from "@/Components/button/button";
-import { getEventById, getAllEvents } from "@/Api/Api";
-import Data from "@/Data/Data";
+import { getEventById, getAllEvents, getFeaturedEvents } from "@/Api/Api";
 
-export default function EventDetailPage(props) {
+const index = (props) => {
     const item = props.eventById;
 
     function a(){
@@ -76,16 +73,16 @@ export async function getStaticProps(context){
         props: {
             eventById : event
         },
-        revalidate: 10
+        revalidate: 20
     }
 }
 
 export async function getStaticPaths(){
-    const data = await getAllEvents()
+    const data = await getFeaturedEvents()
     // const getid = data.map((item) =>  ({ params :{ product: item.id}}) )
     let getid;
 
-    for( let {id} of data){
+    for( let { id } of data){
         getid = [{ params :{ userdata: id}}]
     }
 
@@ -95,4 +92,4 @@ export async function getStaticPaths(){
     }
 }
 
-// export default index;
+export default index;
