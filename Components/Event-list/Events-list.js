@@ -8,7 +8,7 @@ const EventsList = ({id, title, image, date, location }) => {
 
     return (
         
-        <li className={style.item} key={0}>
+        <li className={style.item} key={id}>
                                 
             <img src={image} alt={image}/>
             <div className={style.content}>
