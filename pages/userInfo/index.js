@@ -25,7 +25,7 @@ const index = (props) => {
             <ul className={style.list}>        
             
                 {
-                    Data.map((item) => {
+                    props.featuredEvents.map((item) => {
                         return (
                             <EventsList {...item}/>
                         )
@@ -42,7 +42,8 @@ export async function getStaticProps(context){
     return {
         props: {
             featuredEvents : featuredEvents
-        }
+        },
+        revalidate: 10
     }
 }
 
