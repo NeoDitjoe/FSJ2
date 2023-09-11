@@ -19,10 +19,10 @@ export async function getAllEvents() {
     return allEvents.filter((event) => event.isFeatured);
   }
   
-//   export async function getEventById(id) {
-//     const allEvents = await getAllEvents();
-//     return allEvents.find((event) => event.id === id);
-//   }
+  export async function getEventById(path) {
+    const allEvents = await getAllEvents();
+    return allEvents.find((event) => event.title === path);
+  }
   
 //   export async function getFilteredEvents(dateFilter) {
 //     const { year, month } = dateFilter;
