@@ -96,33 +96,4 @@ const FilteredEvent = (props) => {
     );
 }
 
-// export async  function getServerSideProps(context){
-//     const { params } = context;
-
-//     const FilterPath = params.slug
-
-//     const filteredYear = FilterPath[0]
-//     const filteredMonth = FilterPath[1]
-
-//     const numYear = +filteredYear
-//     const numMonth = +filteredMonth
-
-//     if (isNaN(numYear) || isNaN(numMonth) || numYear < 2020 || numMonth < 1 || numMonth > 12){
-//         return {
-//             // notFound: true,
-//             hasError: true
-//         }
-//     }
-
-//     const filteredEvents =  await getFilteredEvents({ year: numYear, month:numMonth })
-
-//     return {
-//         props:{
-//             event: filteredEvents,
-//             year: numYear,
-//             month: numMonth
-//         }
-//     }
-// }
-
 export default FilteredEvent;

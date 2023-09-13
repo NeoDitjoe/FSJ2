@@ -4,6 +4,7 @@ import AddressIcon from "@/Components/icons/address-icon";
 import DateIcon from "@/Components/icons/date-icon";
 import Button from "@/Components/button/button";
 import { getEventById, getAllEvents, getFeaturedEvents } from "@/Api/Api";
+import Comments from "@/Components/input/comments";
 
 const index = (props) => {
     const item = props.eventById;
@@ -46,7 +47,7 @@ const index = (props) => {
                         <div className={style.description}>
                             <p>{item.description}</p>
                         </div>
-                        
+                        <Comments eventId={item.id}/>
                     </div>
                 }
             </> 

@@ -3,6 +3,7 @@ import DateIcon from "@/Components/icons/date-icon";
 import AddressIcon from "@/Components/icons/address-icon";
 import ArrowRightIcon from "@/Components/icons/arrow-right-icon";
 import Button from "@/Components/button/button";
+import Image from 'next/image'
 
 const EventsList = ({id, title, image, date, location }) => {
 
@@ -10,7 +11,7 @@ const EventsList = ({id, title, image, date, location }) => {
         
         <li className={style.item} key={id}>
                                 
-            <img src={image} alt={image}/>
+            <Image src={'/' + image} alt={image} width={400} height={400} />
             <div className={style.content}>
                 <div className={style.summary}>
                     <h2>{title}</h2> 
@@ -19,7 +20,7 @@ const EventsList = ({id, title, image, date, location }) => {
                         <DateIcon/>
                         <time>{new Date(date).toLocaleDateString('en-GB', {  year: "2-digit", month: "short", day: "numeric",})}</time>
                     </div>
-
+                
                     <div className={style.address}>
                         <AddressIcon/>
                         <address>{location.replace(', ', '\n')}</address>
