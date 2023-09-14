@@ -5,62 +5,52 @@ import DateIcon from "@/Components/icons/date-icon";
 import Button from "@/Components/button/button";
 import { getEventById, getAllEvents, getFeaturedEvents } from "@/Api/Api";
 import Comments from "@/Components/input/comments";
+import Image from "next/image";
 
 const index = (props) => {
     const item = props.eventById;
 
-    function a(){
 
-        
         if (!item) {
-            return (
-              <div className="center">
-                <p>Loading...</p>
-              </div>
-            );
-          }
-
         return (
-           <>
-                {
-                    <div key={item.id} className={style.item}>
-                        <div className={style.title}>
-                            <h2>{item.title}</h2>
-                        </div>
-
-                        <div className={style.card}>
-                            <div className={style.image}>
-                                <img src={item.image} alt={item.image}/>
-                            </div>
-                            <div>
-                                <div className={style.date}>
-                                    <DateIcon/>
-                                    <time>{new Date(item.date).toLocaleDateString('en-GB', {  year: "2-digit", month: "short", day: "numeric",})}</time>
-                                </div>
-
-                                <div className={style.address}>
-                                    <AddressIcon/>
-                                    <address>{item.location.replace(', ', '\n')}</address>
-                                </div>
-                            </div>
-                        </div>
-                        <div className={style.description}>
-                            <p>{item.description}</p>
-                        </div>
-                        <Comments eventId={item.id}/>
-                    </div>
-                }
-            </> 
-        )
+            <div className="center">
+            <p>Loading...</p>
+            </div>
+        );
     }
 
-    useEffect(() => {
-       a()
-    })
-
     return (
-        <> 
-            {a()}
+        <>
+            {
+                <div key={item.id} className={style.item}>
+                    <div className={style.title}>
+                        <h2>{item.title}</h2>
+                    </div>
+
+                    <div className={style.card}>
+                        <div className={style.image}>
+                            <Image src={'/' + item.image} alt={item.image} width={400} height={400}/>
+                        </div>
+                        <div>
+                            <div className={style.date}>
+                                <DateIcon/>
+                                <time>{new Date(item.date).toLocaleDateString('en-GB', {  year: "2-digit", month: "short", day: "numeric",})}</time>
+                            </div>
+
+                            <div className={style.address}>
+                                <AddressIcon/>
+                                <address>{item.location.replace(', ', '\n')}</address>
+                            </div>
+                        </div>
+                    </div>
+                    <div className={style.description}>
+                        <p>{item.description}</p>
+                    </div>
+                    <Comments eventId={item.id}/>
+                </div>
+            }
+
+
             <Button link='.' children={'back'}/>
         </>
     )
