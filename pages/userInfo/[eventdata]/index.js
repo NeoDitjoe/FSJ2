@@ -57,7 +57,7 @@ const index = (props) => {
 }
 
 export async function getStaticProps(context){
-    const path = context.params.userdata
+    const path = context.params.eventdata
     const event = await getEventById(path)
 
     return {
@@ -74,7 +74,7 @@ export async function getStaticPaths(){
     let getid;
 
     for( let { id } of data){
-        getid = [{ params :{ userdata: id}}]
+        getid = [{ params :{ eventdata: id}}]
     }
 
     return {
