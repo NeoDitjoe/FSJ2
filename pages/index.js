@@ -37,7 +37,9 @@ export default function Home(props) {
             {
                 props.featuredEvents.map((item) => {
                     return (
-                        <EventsList {...item}/>
+                       <ul key={item.id}>
+                           <EventsList {...item}/>
+                       </ul>
                     )
                 })
             }

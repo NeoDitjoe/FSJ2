@@ -46,18 +46,16 @@ const index = (props) => {
                     <div className={style.description}>
                         <p>{item.description}</p>
                     </div>
-                    <Comments eventId={item.id}/>
+                    <Comments eventId={item.title}/>
                 </div>
             }
-
-
             <Button link='.' children={'back'}/>
         </>
     )
 }
 
 export async function getStaticProps(context){
-    const path = context.params.eventdata
+    const path = context.params.eventId
     const event = await getEventById(path)
 
     return {
@@ -74,13 +72,14 @@ export async function getStaticPaths(){
     let getid;
 
     for( let { id } of data){
-        getid = [{ params :{ eventdata: id}}]
+        getid = [{ params :{ eventId: id}}]
     }
 
     return {
         paths: getid,
         fallback: true,
     }
+    
 }
 
 export default index;
