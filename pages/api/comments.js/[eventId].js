@@ -30,6 +30,8 @@ export default async function handler(req, res){
       const result = await db.collection('comments').insertOne(newComment)
       console.log(result)
 
+      newComment = result.insertedId
+
       res.status(201).json({ message: 'Added comment.', comment: newComment });
 
   }
