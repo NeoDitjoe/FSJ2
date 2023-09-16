@@ -49,6 +49,8 @@ const index = (props) => {
                     <Comments eventId={item.title}/>
                 </div>
             }
+
+
             <Button link='.' children={'back'}/>
         </>
     )

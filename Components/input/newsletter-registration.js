@@ -9,7 +9,7 @@ function NewsletterRegistration() {
 
     const emailInput = emailRef.current.value
       
-      fetch('api/newsletter', {
+      fetch('/api/newsletter', {
         method: 'POST',  
         body: JSON.stringify({  email : emailInput }),
         headers : { 

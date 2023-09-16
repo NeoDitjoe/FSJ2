@@ -1,5 +1,6 @@
 
 import classes from './comment-list.module.css';
+import { useEffect } from 'react';
 
 function CommentList(props) {
   const { items } = props;
