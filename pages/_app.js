@@ -1,18 +1,26 @@
-import '@/styles/globals.css'
-import { ContextProvider } from '@/stateContext/StateContext'
-import { Inter } from 'next/font/google'
-import Layout from '/Components/layout/layout'
+import Head from 'next/head'
+import '../styles/globals.css'
+import Layout from '../components/layout/layout'
 
-const inter = Inter({ subsets: ['latin'] })
-
-export default function App({ Component, pageProps }) {
+function MyApp({ Component, pageProps }) {
   return (
-    <div className={inter.className}>
-      <ContextProvider>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </ContextProvider>
-    </div>
-  )
-}
+    <Layout>
+
+    <Head>
+
+      <title>Next Events</title>
+      <meta name='description' content='NextJS events' />
+
+      <meta
+
+        name='viewport'
+        content='initial-scale=1.0, width=device-width'
+
+      />
+
+    </Head>
+      <Component {...pageProps} />
+    </Layout>
+)}
+
+export default MyApp

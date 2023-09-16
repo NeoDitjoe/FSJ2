@@ -1,24 +1,44 @@
-import { MongoClient } from "mongodb";
+import {connectDatabase, insertDocument} from '../../helpers/db-util'
 
 export default async function handler(req, res){
-    if (req.method === 'POST'){
-        const userEmail = req.body.email;
 
-        if ( !userEmail || !userEmail.includes('@')){
-            res.status(422).json({ message: " Invalid email address"});
+    if(req.method === 'POST'){
+
+        const userEmail = req.body.email
+
+        if(!userEmail || !userEmail.includes('@')) {
+
+            res.status(422).json({message: 'Invalid email address'})
+            return
         }
 
-        const client = await MongoClient.connect('mongodb+srv://Cozy4real:mmmmmm@cluster0.kq0haj9.mongodb.net/events?retryWrites=true&w=majority')
+        let client;
 
-        const db = client.db();
-        await db.collection('newsletter').insertOne({ email: userEmail })
+        try {
 
-        client.close();
+            client = await connectDatabase()
 
-        res.status(201).json({ message : 'signed up'})
+        } catch(error){
+
+            res.status(500).json({message: 'Connecting to the databse failed!'})
+            return
+        }
+        
+        try {
+
+            await insertDocument(client, 'newsletter', {email:userEmail})
+            client.close()
+
+        }catch(error){
+
+            res.status(500).json({message: 'Inserting data failed!'})
+            return
+        }
+        
+        
+
+        res.status(201).json({messageL: 'Signed up!'}) 
+
     }
 
-    if( req.method === 'GET'){
-        res.status(201).json({ message : 'signed up'})
-    }
 }

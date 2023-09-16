@@ -47,12 +47,10 @@ function NewComment(props) {
           <input type='text' id='name' ref={nameInputRef} />
         </div>
       </div>
-
       <div className={classes.control}>
         <label htmlFor='comment'>Your comment</label>
         <textarea id='comment' rows='5' ref={commentInputRef}></textarea>
       </div>
-      
       {isInvalid && <p>Please enter a valid email address and comment!</p>}
       <button>Submit</button>
     </form>
