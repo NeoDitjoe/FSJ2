@@ -1,12 +1,12 @@
-import Head from "next/head"
-import { useRouter } from "next/router"
+import Head from 'next/head'
+import { useRouter } from 'next/router'
 // import getFilteredEvents from "../../helpers/api-util"
-import EventList from "../../components/event-list"
+import EventList from '../../components/event-list'
 import ResultsTitle from '../../components/results-title'
-import { Fragment, useEffect, useState } from "react"
+import { Fragment, useEffect, useState } from 'react'
 import ErrorAlert from '../../components/ui/error-alert'
 import Button from '../../components/ui/button'
-import useSWR from "swr"
+import useSWR from 'swr'
 
 export default function Filtered(){
 
@@ -67,7 +67,7 @@ export default function Filtered(){
 
                 {pageHeadData}
 
-                <p className="center">Loading...</p>
+                <p className='center'>Loading...</p>
 
             </Fragment>
 

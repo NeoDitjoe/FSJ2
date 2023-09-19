@@ -8,10 +8,12 @@ export default function StateContext(){
 
 export function ContextProvider({children}){
 
-    const [ first , setFirst ] = useState('')
+    const [ status , setStatus ] = useState('')
+    const [ message , setMessage ] = useState('')
+    const [ title , setTitle ] = useState('')
 
     return(
-        <Context.Provider value={{ first, setFirst }}>
+        <Context.Provider value={{ status, setStatus, message, setMessage, title, setTitle }}>
             {children}
         </Context.Provider>
     )

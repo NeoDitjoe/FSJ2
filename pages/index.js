@@ -34,7 +34,7 @@ export async function getStaticProps(){
 
     const featureEvents = await getFeaturedEvents()
 
-    return{
+    return {
 
         props: {
             events: featureEvents

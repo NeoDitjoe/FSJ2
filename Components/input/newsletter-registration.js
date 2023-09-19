@@ -1,7 +1,10 @@
 import { useRef } from 'react';
 import classes from './newsletter-registration.module.css';
+import StateContext from '@/stateContext/StateContext';
 
 function NewsletterRegistration() {
+
+  const { setStatus, setMessage, setTitle } = StateContext()
 
   const emailInputRef = useRef()
 
@@ -11,18 +14,39 @@ function NewsletterRegistration() {
 
     const enteredEmail = emailInputRef.current.value  
 
+    setStatus('pending')
+    setMessage('Registering')
+    setTitle('Pending!')
+
     fetch('api/newsletter', {
 
       method: 'POST',
       body: JSON.stringify({email: enteredEmail}),
       headers: {
-
         'content-type': 'application/json'
-
       }
 
-    }).then(response => response.json())
-    .then(data => console.log(data))
+
+    })
+    .then(response => {
+      if(response.ok){
+        return response.json()
+      }
+
+      return response.json().then(data => {
+        throw new Error(data.message || 'somethimg went wrong')
+      })
+    })
+    .then(data => {
+      setStatus('success')
+      setMessage('Successfully registered')
+      setTitle('Success!')
+    })
+    .catch((error) => {
+      setStatus('error')
+      setMessage('Something went wrong!')
+      setTitle('Error!')
+    })
 
   }
 
@@ -47,3 +71,5 @@ function NewsletterRegistration() {
 }
 
 export default NewsletterRegistration;
+
+

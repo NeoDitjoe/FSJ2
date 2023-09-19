@@ -1,6 +1,6 @@
-import Button from "../../components/ui//button";
+import Button from '../../components/ui//button';
 import classes from './events-search.module.css'
-import {useRef } from "react";
+import {useRef } from 'react';
 
 export default function EventsSearch(props){
 
@@ -26,8 +26,8 @@ export default function EventsSearch(props){
 
                 <div className={classes.controls}>
 
-                    <label htmlFor="year">Year</label>
-                    <select id="year" ref={yearInputRef}>
+                    <label htmlFor='year'>Year</label>
+                    <select id='year' ref={yearInputRef}>
                         <option value='2021'>2021</option>
                         <option value='2022'>2022</option>
                     </select>
@@ -36,8 +36,8 @@ export default function EventsSearch(props){
 
                 <div className={classes.controls}>
 
-                    <label htmlFor="month">Month</label>
-                    <select id="month" ref={monthInputRef}>
+                    <label htmlFor='mont'>Month</label>
+                    <select id='month' ref={monthInputRef}>
 
                         <option value='1'>January</option>
                         <option value='2'>February</option>
